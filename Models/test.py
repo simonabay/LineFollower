@@ -6,14 +6,14 @@ import numpy as np
 from picamera import PiCamera
 
 gpg = EasyGoPiGo3()
-c=PiCamera()
+#c=PiCamera()
 
 
 gpg.forward()
 # time.sleep(1)
 # gpg.turn_degrees(5) #
 # gpg.forward()
-time.sleep(1)
+time.sleep(0.1)
 gpg.stop()
 # 
 # 

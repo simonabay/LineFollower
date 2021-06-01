@@ -25,7 +25,7 @@ WHEEL_SPEED_CONSTANT = 20
 left_turn = (0.4, 1.0)
 right_turn = (1.0, 0.4)
 
-dataset_path = "/home/pi/Desktop/Images"
+dataset_path = "/home/pi/Desktop/Data/Image"
 
 def getch():
     fd = sys.stdin.fileno()
@@ -74,7 +74,7 @@ def loop(cond):
     global steerings
     steerings=[]
     steering=0
-    gpg.set_speed(80)
+    gpg.set_speed(20)
     
     while True:
         logging.debug('Starting producer thread')
@@ -94,6 +94,7 @@ def loop(cond):
             #gpg.turn_degrees(steering)
             gpg.forward()
             time.sleep(0.5)
+            gpg.stop()
             steerings.append(steering)
             print(steering)
             #steerings.append(steering)
@@ -117,11 +118,12 @@ def loop(cond):
            
             #TurnDegrees(-2, 20)
             #time.sleep(0.5)
-            gpg.turn_degrees(-10)
+            gpg.turn_degrees(-4)
             gpg.forward()
             time.sleep(0.5)
+            gpg.stop()
             print(steering)
-            steering=steering-10
+            steering=steering-4
             steerings.append(steering)
             #camera("Left")
 
@@ -133,10 +135,11 @@ def loop(cond):
             #gpg.set_motor_power(gpg.MOTOR_RIGHT, WHEEL_SPEED_CONSTANT * right_turn[1])
             
             #TurnDegrees(40, 20)
-            gpg.turn_degrees(10)
+            gpg.turn_degrees(4)
             gpg.forward()
             time.sleep(0.5)
-            steering =steering + 10
+            gpg.stop()
+            steering =steering + 4
             steerings.append(steering)
             print(steering)
             #camera("Right")
